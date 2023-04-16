@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "pokemon solid";
+    src: url("./app/style/font/Pokemon_Solid.ttf");
+}
+
+@font-face {
+    font-family: "pokemon hollow";
+    src: url("./app/style/font/Pokemon_Hollow.ttf");
+}
+
+@font-face {
+    font-family: "bebas";
+    src: url("./app/style/font/BebasNeue-Regular.ttf") format('ttf'),
+         url("./app/style/font/BebasNeue-Regular.eot") format('eot'),
+         url("./app/style/font/BebasNeue-Regular.otf") format('otf'),
+         url("./app/style/font/BebasNeue-Regular.woff") format('woff'),
+         url("./app/style/font/BebasNeue-Regular.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "Folks";
+    src: url("./app/style/font/Folks-Normal.ttf");
+}
+
+@font-face {
+    font-family: "Folks Bold";
+    src: url("./app/style/font/Folks-Bold.ttf");
+}
+
+
+* {
+    box-sizing: content-box;
+}
+
+body {
+    margin: 0;
+    background-image: linear-gradient(315deg, #85FFBD 0%, #FFFB7D 100%);
+}
+
+h1 {
+    font-family: "pokemon solid";
+}

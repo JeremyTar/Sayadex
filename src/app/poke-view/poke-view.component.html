@@ -1,0 +1,45 @@
+<div class="pokeView">
+    <div class="pokeView_img">
+        <div class="pokeView_img_label">
+            <p>Shiny</p>
+            <label class="switch">
+                <input type="checkbox" id="showShiny" (click)="showShinyButton()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <img *ngIf="!showShiny && shinyImg" [src]="this.mainImg" [alt]="pokemonInfo.pokemonName + 'default'">
+        <img *ngIf="showShiny && shinyImg" [src]="this.shinyImg" [alt]="pokemonInfo.pokemonName + 'shiny'">
+    </div>
+    <div class="pokeView_pokeInfo">
+        <div class="pokeView_pokeInfo_header">
+            <h2>{{ pokemonInfo.pokemonName }}</h2>
+            <div class="pokeView_pokeInfo_header_types">
+                <img *ngFor="let type of pokemonInfo.type" [src]="'../../assets/types/' + type + '.png'"
+                    [alt]="type + ' type'" class="pokeView_pokeInfo_header_types_type">
+            </div>
+        </div>
+        <div class="pokeView_pokeInfo_size">
+            <fa-icon [icon]="faSize"></fa-icon>
+            <p>{{ pokemonInfo.height }} Metres</p>
+            <fa-icon [icon]="faWeight"></fa-icon>
+            <p>{{ pokemonInfo.weight }} Kg</p>
+        </div>
+        <div class="pokeView_pokeInfo_talent">
+            <h3>Abilities</h3>
+            <p *ngFor="let ability of pokemonInfo.abilities">{{ ability }}</p>
+        </div>
+        <div class="pokeView_pokeInfo_type">
+            <h3>Types</h3>
+            <table>
+                <thead>
+                    <th *ngFor="let type of types">
+                        <img [src]="'../../assets/types/' + type.name + 'Icone.png'" [alt]="type">
+                    </th>
+                </thead>
+                <tbody>
+                    <th *ngFor="let type of types" [id]="type.name">x0.5</th>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

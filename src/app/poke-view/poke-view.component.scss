@@ -1,0 +1,152 @@
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 25px;
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(248, 249, 216,0.5);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: 2px solid black;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: black;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #ff1b02;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(34px);
+  -ms-transform: translateX(34px);
+  transform: translateX(34px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.pokeView {
+  display: flex;
+  width: 90%;
+  font-family: 'bebas';
+  margin: 50px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  &_img {
+    width: 30%;
+    min-width: 300px;
+    border-radius: 25px;
+    background-color: rgba(248, 249, 216,0.5);
+    padding: 10px;
+    &_label {
+      display: flex;
+      flex-direction: row-reverse;
+      width: 95%;
+      p {
+        margin: 0;
+      }
+      label {
+        margin: 0 10px;
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+  &_pokeInfo {
+    width: 50%;
+    padding: 15px;
+    min-width: 300px;
+    max-width: 750px;
+    &_header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      &_types {
+        display: flex;
+        margin-right: 10px;
+        justify-content: start;
+        &_type {
+          min-width: 120px;
+          width: 20%;
+          max-width: 200px;
+          margin-right:5px
+        }
+      }    
+      h2 {
+        font-size: 3em;
+        margin: 0;
+      }
+    }
+
+    &_size {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      border-radius: 25px;
+      margin: auto;
+      background-color: rgba(248, 249, 216,0.5);
+      margin: 25px 0;
+    }
+    &_talent {
+      h3 {
+        font-family: "pokemon solid";
+        font-size: 1.5em;
+      }
+    }
+    &_type {
+      table{
+        border: 2px solid red;
+        width: 100%;
+        thead {
+          width: 100%;
+          th {
+            img {
+              width: 100%;
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .pokeView_pokeInfo_header {
+    flex-wrap: nowrap;
+    &_types {
+    margin-left: 10px;
+    }
+  }
+  
+}
