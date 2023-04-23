@@ -14,7 +14,7 @@
         <div class="pokeView_pokeInfo_header">
             <h2>{{ pokemonInfo.pokemonName }}</h2>
             <div class="pokeView_pokeInfo_header_types">
-                <img *ngFor="let type of pokemonInfo.type" [src]="'../../assets/types/' + type + '.png'"
+                <img *ngFor="let type of pokemonInfo.type" [src]="'../../assets/types/standard_size/' + type + '.png'"
                     [alt]="type + ' type'" class="pokeView_pokeInfo_header_types_type">
             </div>
         </div>
@@ -28,16 +28,41 @@
             <h3>Abilities</h3>
             <p *ngFor="let ability of pokemonInfo.abilities">{{ ability }}</p>
         </div>
-        <div class="pokeView_pokeInfo_type">
+    </div>
+    <div class="pokeView_details">
+        <div class="pokeView_details_type">
             <h3>Types</h3>
-            <table>
-                <thead>
+            <table class="pokeView_details_type_tableLegende">
+                <thead class="pokeView_details_type_tableLegende_legende">
+                    <th class="L">Legende</th>
+                    <th class="DR">Double resistance 1/4<div class="containt"><img
+                                src="../../assets/types/icone_size/normal.png"><img
+                                src="../../assets/types/icone_size/normal.png"></div>
+                    </th>
+                    <th class="R">Resistance 1/2<div class="containt"><img
+                                src="../../assets/types/icone_size/normal.png"></div>
+                    </th>
+                    <th class="F">Faiblesse x2<div class="containt"><img
+                                src="../../assets/types/icone_size/normal.png"></div>
+                    </th>
+                    <th class="DF">Double faiblesse x4<div class="containt"><img
+                                src="../../assets/types/icone_size/normal.png"><img
+                                src="../../assets/types/icone_size/normal.png"></div>
+                    </th>
+                    <th class="I">Immunité <div class="containt">
+                        <img
+                                src="../../assets/types/icone_size/normal.png">
+                    </div></th>
+                </thead>
+            </table>
+            <table class="pokeView_details_type_tableSensibility">
+                <thead class="pokeView_details_type_tableSensibility_icones">
                     <th *ngFor="let type of types">
-                        <img [src]="'../../assets/types/' + type.name + 'Icone.png'" [alt]="type">
+                        <img [src]="'../../assets/types/medium_size/' + type.name + '.png'" [alt]="type">
                     </th>
                 </thead>
-                <tbody>
-                    <th *ngFor="let type of types" [id]="type.name">x0.5</th>
+                <tbody class="pokeView_details_type_tableSensibility_factors">
+                    <td *ngFor="let type of types" [id]="type.name" class="pokeView_details_type_tableSensibility_factors_factor"></td>
                 </tbody>
             </table>
         </div>

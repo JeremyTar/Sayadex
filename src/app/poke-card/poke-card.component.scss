@@ -1,16 +1,68 @@
-.Vignette {
+.card {
     margin: 15px;
     padding: 15px;
     width: 150px;
     height: 150px;
-    p {
-        margin: 0;
-        font-size: 1.5em;
-        font-family: 'bebas';
+    background-color: rgba(248, 249, 216, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(194, 195, 171);
+    border-radius: 15px;
+    &_loader {
+        position: relative;
+        height: 100px;
+        width: 100px;
+        background: linear-gradient(to bottom, rgb(254, 0, 1) 50%, white 50%);
+        border-radius: 50%;
+        border: 8px solid black;
+        animation: spin 1s linear infinite;
     }
-    img {
-        width: 130px;
-        height: 130px;
+    &_loader::before {
+        content: '';
+        position: absolute;
+        height: 8px;
+        width: 100px;
+        background: black;
+        top: 50px;
+        transform: translatey(-50%);
+    }
+
+    &_loader::after {
+        content: '';
+        position: absolute;
+        height: 38px;
+        width: 38px;
+        border-radius: 50%;
+        background: white;
+        top: 50px;
+        left: 50px;
+        transform: translate(-50%, -50%);
+        box-shadow: inset 0 0 0 8px black, inset 0 0 0 10px white, inset 0 0 0 12px black;
+    }
+    &_link {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        p {
+            margin: 0;
+            font-size: 1.5em;
+            font-family: 'bebas';
+        }
+
+        img {
+            width: 130px;
+            height: 130px;
+        }
     }
 }
 
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

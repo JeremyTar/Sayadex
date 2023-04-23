@@ -1,4 +1,12 @@
-<button class="Vignette" type="button" routerLink="/focus/" [queryParams]="{ id: id }">
-    <p>{{this.name}}</p>
-    <img [src]="this.imageSrc" [alt]="this.alt">
-</button>
+<div *ngIf="!this.loaded" class="card">
+    <div class="card_loader">
+    </div>    
+</div>
+
+<div *ngIf="this.loaded" class="card">
+    <button  class="card_link" type="button" routerLink="/focus/" [queryParams]="{ id: id }">
+        <p>{{this.name}}</p>
+        <img [src]="this.imageSrc" [alt]="this.alt">
+    </button>
+</div>
+
