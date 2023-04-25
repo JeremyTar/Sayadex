@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PokeCardComponent } from './poke-card/poke-card.component';
 import { PokeViewComponent } from './poke-view/poke-view.component';
 import { FooterComponent } from './footer/footer.component';
+import { BaseStatitiqueComponent } from './base-statitique/base-statitique.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
     PokeCardComponent,
     PokeViewComponent,
     FooterComponent,
+    BaseStatitiqueComponent,
   ],
   imports: [
     BrowserModule,

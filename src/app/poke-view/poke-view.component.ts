@@ -127,7 +127,6 @@ export class PokeViewComponent {
     await this.getPokemonInfo(this.id)
     await this.getType()
     await this.calculateAdvantageTypes(this.pokemonInfo)
-    console.log(this.pokemonSensibility)
     this.showTableTypes(this.pokemonSensibility)
 
 
@@ -194,13 +193,13 @@ export class PokeViewComponent {
   }
   async calculateAdvantageTypes(pokemon: PokemonClass) {
     const myTypes: string[] = pokemon.type
-    console.log(myTypes)
     for (const i in myTypes) {
       await fetch(`https://pokeapi.co/api/v2/type/${myTypes[i]}`)
         .then(response => response.json())
         .then(data => {
           this.calculateResistance(data.damage_relations.half_damage_from, myTypes[i])
           this.calculateWeakness(data.damage_relations.double_damage_from, myTypes[i])
+          this.calculateImmunity(data.damage_relations.no_damage_from, myTypes[i])
 
         })
     }
@@ -216,12 +215,23 @@ export class PokeViewComponent {
       })
     });
   }
-  calculateWeakness(weakness: any, myType: string) {
+  calculateWeakness(weakness: Resistance[], myType: string) {
     weakness.forEach((element: Resistance) => {
       let name = element.name
       this.pokemonSensibility.forEach((el) => {
         if (el.name == name) {
           el.indice -= 1
+          el.elements.push(myType)
+        }
+      })
+    });
+  }
+  calculateImmunity(immunity: Resistance[], myType: string) {
+    immunity.forEach((element: Resistance) => {
+      let name = element.name
+      this.pokemonSensibility.forEach((el) => {
+        if (el.name == name) {
+          el.indice = 99
           el.elements.push(myType)
         }
       })
@@ -234,19 +244,18 @@ export class PokeViewComponent {
         switch (el.indice) {
           case 1:
             td.setAttribute("class", "resistance")
-            console.log("A")
             break
           case 2:
             td.setAttribute("class", "doubleResistance")
-            console.log("B", td)
             break
           case -1:
             td.setAttribute("class", "faiblesse")
-            console.log("C")
             break
           case -2:
             td.setAttribute("class", "doublefaiblesse")
-            console.log("D")
+            break
+          case 99:
+            td.setAttribute("class", "immunity")
             break
           default:
             break
