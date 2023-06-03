@@ -10,7 +10,7 @@ import { PokeMove, SunburstData, SunburstTypeClass, SunburstDataValueAttack } fr
 
 export class ChartSunburstComponent {
   @Input() moves!: PokeMove[];
-  public sunburstLoaded: Boolean = false
+  public sunburstLoaded: boolean = false
   public sunburstData: SunburstData = new SunburstData
   private elementsType: string[] = []
 
@@ -53,14 +53,15 @@ export class ChartSunburstComponent {
         }
       this.VerifyPresenceType(type)
       this.addMouvInData(type, damageClass, mouvSunburts)
-      if(loaded == true) {
+      if(loaded) {
         this.makeChart()
       }      
       })
+      .catch(err => console.log(err))
   }
   async VerifyPresenceType(type: string) {
     let addType = true
-    for(let i = 0; i < this.elementsType.length; i++) {
+    for(const i in this.elementsType) {
       if(type == this.elementsType[i]) {
         addType = false
       }

@@ -166,7 +166,7 @@ export class PokeViewComponent {
     }
   }
   showShinyButton() {
-    if (this.showShiny == false) {
+    if (!this.showShiny) {
       let icone = document.getElementById("showShiny")
       if (icone) {
         icone.style.color = "yellow"
@@ -272,7 +272,7 @@ export class PokeViewComponent {
             },
             version_group_details: []
           };
-          move.move.name = el.move.name,
+          move.move.name = el.move.name
           move.move.url = el.move.url
           moves.push(move)
         })

@@ -17,10 +17,7 @@ export class PokeCardComponent {
   alt!: string;
   id!: number;
 
-  loaded: Boolean = false;
-
-  // url: string = this.pokemon.url
-  // name: string = this.pokemon.name
+  loaded: boolean = false;
 
   async ngOnInit() {
     await fetch(this.pokemon)

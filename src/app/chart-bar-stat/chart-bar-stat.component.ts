@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { TableStat, datasetChart } from '../pokeClass';
+import { TableStat} from '../pokeClass';
 
 @Component({
   selector: 'app-chart-bar-stat',
