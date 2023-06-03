@@ -17,6 +17,8 @@ export class PokeCardComponent {
   alt!: string;
   id!: number;
 
+  loaded: Boolean = false;
+
   // url: string = this.pokemon.url
   // name: string = this.pokemon.name
 
@@ -27,6 +29,7 @@ export class PokeCardComponent {
         this.imageSrc = data.sprites.front_default
         this.name = data.name
         this.id = data.id
+        this.loaded = true
     })
   }
   routeToPokemonPage(id: number) {

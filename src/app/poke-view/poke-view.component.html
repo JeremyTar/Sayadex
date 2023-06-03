@@ -12,34 +12,79 @@
     </div>
     <div class="pokeView_pokeInfo">
         <div class="pokeView_pokeInfo_header">
-            <h2>{{ pokemonInfo.pokemonName }}</h2>
+            <h2 id="pokeName">{{ this.pokemonInfo.pokemonName }}</h2>
             <div class="pokeView_pokeInfo_header_types">
-                <img *ngFor="let type of pokemonInfo.type" [src]="'../../assets/types/' + type + '.png'"
-                    [alt]="type + ' type'" class="pokeView_pokeInfo_header_types_type">
+                <img *ngFor="let type of this.pokemonInfo.type"
+                    [src]="'../../assets/types/standard_size/' + this.type + '.png'" [alt]="this.type + ' type'"
+                    class="pokeView_pokeInfo_header_types_type">
             </div>
         </div>
         <div class="pokeView_pokeInfo_size">
             <fa-icon [icon]="faSize"></fa-icon>
-            <p>{{ pokemonInfo.height }} Metres</p>
+            <p>{{ this.pokemonInfo.height }} Metres</p>
             <fa-icon [icon]="faWeight"></fa-icon>
-            <p>{{ pokemonInfo.weight }} Kg</p>
+            <p>{{ this.pokemonInfo.weight }} Kg</p>
         </div>
-        <div class="pokeView_pokeInfo_talent">
+        <div class="pokeView_pokeInfo_talents">
             <h3>Abilities</h3>
-            <p *ngFor="let ability of pokemonInfo.abilities">{{ ability }}</p>
+            <div class="pokeView_pokeInfo_talents_talent">
+                <p *ngFor="let ability of this.pokemonInfo.abilities" [id]="ability.name">{{ ability.name }}</p>
+            </div>
+            <div class="pokeView_pokeInfo_talents_containt">
+            </div>
+
         </div>
-        <div class="pokeView_pokeInfo_type">
+    </div>
+    <div class="pokeView_details">
+        <div class="pokeView_details_type">
             <h3>Types</h3>
-            <table>
-                <thead>
-                    <th *ngFor="let type of types">
-                        <img [src]="'../../assets/types/' + type.name + 'Icone.png'" [alt]="type">
+            <table class="pokeView_details_type_tableLegende">
+                <thead class="pokeView_details_type_tableLegende_legende">
+                    <th class="L">Legende</th>
+                    <th class="DR">Double resistance 1/4<div class="containt"><img
+                                src="../../assets/types/icone_size/normal.png"><img
+                                src="../../assets/types/icone_size/normal.png"></div>
+                    </th>
+                    <th class="R">Resistance 1/2<div class="containt"><img
+                                src="../../assets/types/icone_size/normal.png"></div>
+                    </th>
+                    <th class="F">Faiblesse x2<div class="containt"><img src="../../assets/types/icone_size/normal.png">
+                        </div>
+                    </th>
+                    <th class="DF">Double faiblesse x4<div class="containt"><img
+                                src="../../assets/types/icone_size/normal.png"><img
+                                src="../../assets/types/icone_size/normal.png"></div>
+                    </th>
+                    <th class="I">Immunité <div class="containt">
+                            <img src="../../assets/types/icone_size/normal.png">
+                        </div>
                     </th>
                 </thead>
-                <tbody>
-                    <th *ngFor="let type of types" [id]="type.name">x0.5</th>
+            </table>
+            <table class="pokeView_details_type_tableSensibility">
+                <thead class="pokeView_details_type_tableSensibility_icones">
+                    <th *ngFor="let type of types">
+                        <img [src]="'../../assets/types/medium_size/' + type.name + '.png'" [alt]="type">
+                    </th>
+                </thead>
+                <tbody class="pokeView_details_type_tableSensibility_factors">
+                    <td *ngFor="let type of types" [id]="type.name"
+                        class="pokeView_details_type_tableSensibility_factors_factor"></td>
                 </tbody>
             </table>
+        </div>
+        <div class="pokeView_details_stats">
+            <h3>Stats</h3>
+            <div class="pokeView_details_stats_containt">
+                <app-chart-radial-stat [stats]="this.tableOfStat"
+                    [name]="this.pokemonInfo.pokemonName" [averageStat]="this.averageOfStat"></app-chart-radial-stat>
+                <app-chart-bar-stat [stats]="this.tableOfStat"></app-chart-bar-stat>                
+            </div>
+
+        </div>
+        <div class="pokeView_details_skills">
+            <h3>Skills</h3>
+            <app-chart-sunburst [moves]="this.pokemonInfo.moves"></app-chart-sunburst>
         </div>
     </div>
 </div>
