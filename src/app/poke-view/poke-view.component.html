@@ -14,9 +14,14 @@
         <div class="pokeView_pokeInfo_header">
             <h2 id="pokeName">{{ this.pokemonInfo.pokemonName }}</h2>
             <div class="pokeView_pokeInfo_header_types">
+<<<<<<< HEAD
                 <img *ngFor="let type of this.pokemonInfo.type"
                     [src]="'../../assets/types/standard_size/' + this.type + '.png'" [alt]="this.type + ' type'"
                     class="pokeView_pokeInfo_header_types_type">
+=======
+                <img *ngFor="let type of pokemonInfo.type" [src]="'../../assets/types/standard_size/' + type + '.png'"
+                    [alt]="type + ' type'" class="pokeView_pokeInfo_header_types_type">
+>>>>>>> 01637a7bb6d87c538390e3a7a0c7f4654652d145
             </div>
         </div>
         <div class="pokeView_pokeInfo_size">
